@@ -46,7 +46,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.Entity" />
@@ -69,6 +71,7 @@
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http">
+      <HintPath>..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.Net.Http.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
@@ -306,6 +309,20 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CharacterCreatorData\CharacterCreatorData.csproj">
+      <Project>{f74552b0-0e63-49f2-81f2-0f004e2ff82e}</Project>
+      <Name>CharacterCreatorData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CharacterCreatorModels\CharacterCreatorModels.csproj">
+      <Project>{97ca3ff8-86fe-4141-abcc-431fc03460e2}</Project>
+      <Name>CharacterCreatorModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CharacterCreatorServices\CharacterCreatorServices.csproj">
+      <Project>{f98347ad-65ee-4d79-95f3-2b3560e75851}</Project>
+      <Name>CharacterCreatorServices</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
