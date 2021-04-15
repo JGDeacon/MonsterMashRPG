@@ -20,5 +20,6 @@ namespace CharacterCreatorModels
 
         
         public int SPD { get; set; }
+        public int Level { get; set; }
     }
 }

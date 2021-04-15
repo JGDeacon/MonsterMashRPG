@@ -211,8 +211,13 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CharacterController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SeedController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104151923229_wtf.cs" />
+    <Compile Include="Migrations\202104151923229_wtf.Designer.cs">
+      <DependentUpon>202104151923229_wtf.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -324,6 +329,11 @@
       <Project>{f98347ad-65ee-4d79-95f3-2b3560e75851}</Project>
       <Name>CharacterCreatorServices</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202104151923229_wtf.resx">
+      <DependentUpon>202104151923229_wtf.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

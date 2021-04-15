@@ -26,7 +26,8 @@ namespace CharacterCreatorServices
                     Name = model.Name,
                     BaseHP = model.HP,
                     BaseSpd = model.SPD,
-                    BaseStr = model.STR
+                    BaseStr = model.STR,
+                    Level = 1                    
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -52,8 +53,9 @@ namespace CharacterCreatorServices
                             Name = e.Name,
                             HP = e.BaseHP,
                             SPD = e.BaseSpd,
-                            STR = e.BaseStr
-
+                            STR = e.BaseStr,
+                            Level = e.Level
+                            
                         });
 
                 return query.ToArray();
