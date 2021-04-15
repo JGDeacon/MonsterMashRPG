@@ -6,19 +6,10 @@ using System.Threading.Tasks;
 
 namespace CharacterCreatorModels
 {
-    public class CharacterDetail
+    public class AddAdjustment
     {
-        public int ID { get; set; }
-
-        public string Name { get; set; }
-
         public int HP { get; set; }
-
-
         public int STR { get; set; }
-
-
         public int SPD { get; set; }
-        public int Level { get; set; }
     }
 }
