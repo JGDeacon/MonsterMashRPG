@@ -21,6 +21,7 @@ namespace CharacterCreatorData
         public int BaseStr { get; set; }
         [Required, Range(5, 10, ErrorMessage = "Valid enteries are int between 5 & 10")]
         public int BaseSpd { get; set; }
+        public int Level { get; set; }
         public Item InventoryOne { get; set; }
         public Item InventoryTwo { get; set; }
         public Item InventoryThree { get; set; }
