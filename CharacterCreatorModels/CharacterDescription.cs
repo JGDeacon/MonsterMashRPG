@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CharacterCreatorModels
 {
-    public class PlayerDescription
+    public class CharacterDescription
     {
         public int ID { get; set; }
        
