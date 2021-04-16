@@ -27,7 +27,8 @@ namespace CharacterCreatorServices
                     BaseHP = model.HP,
                     BaseSpd = model.SPD,
                     BaseStr = model.STR,
-                    Level = 1
+                    Level = 1,
+                    XP=0
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -35,6 +36,11 @@ namespace CharacterCreatorServices
                 ctx.Character.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
+        }
+
+        public bool AddXP(AddXP model)
+        {
+            throw new NotImplementedException();
         }
 
         public IEnumerable<CharacterListItem> GetCharacters()
@@ -55,8 +61,8 @@ namespace CharacterCreatorServices
                             HP = e.BaseHP + ctx.Attributes.FirstOrDefault(f => f.Level == e.Level).HP,
                             SPD = e.BaseSpd + ctx.Attributes.FirstOrDefault(f => f.Level == e.Level).SPD,
                             STR = e.BaseStr + ctx.Attributes.FirstOrDefault(f => f.Level == e.Level).STR,
-                            Level = e.Level
-
+                            Level = e.Level,
+                            XP = e.XP
                         });
 
                 return query.ToArray();
@@ -85,7 +91,9 @@ namespace CharacterCreatorServices
                         HP = entity.BaseHP + HPAdj,
                         SPD = entity.BaseHP + STRAdj,
                         STR = entity.BaseStr + SPDAdj,
-                        Level = entity.Level                        
+                        Level = entity.Level,
+                        XP = entity.XP
+                        
                     };
             }
         }
