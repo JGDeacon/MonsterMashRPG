@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,7 +42,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddAdjustment.cs" />
+    <Compile Include="AddLevel.cs" />
+    <Compile Include="AddXP.cs" />
+    <Compile Include="CharacterCreate.cs" />
+    <Compile Include="CharacterDescription.cs" />
+    <Compile Include="CharacterDetail.cs" />
+    <Compile Include="CharacterListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CharacterCreatorData\CharacterCreatorData.csproj">
+      <Project>{F74552B0-0E63-49F2-81F2-0F004E2FF82E}</Project>
+      <Name>CharacterCreatorData</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
