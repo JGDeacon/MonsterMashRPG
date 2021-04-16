@@ -7,11 +7,11 @@
 \*Credits  
 
 ****
-##General Information
+##General Information  
 This application allows the user to create a character and customize the HP, strength and speed of their character.
 
 ****
-##Links
+##Links  
 Sprint Report (Jira)  
 https://jgdeacon.atlassian.net/jira/software/projects/AG/boards/6/reports/burndown  
 
@@ -20,12 +20,12 @@ https://jgdeacon.atlassian.net/jira/software/projects/AG/boards/6/roadmap
 
 
 ****
-##Information and Usage
+##Information and Usage  
 Hit the Seed endpoint only once  
 
 
 ****
-##Credits
+##Credits  
 Jeff Deacon  
 Shirisha Bongu  
-Amber Schumpert  
+Amber Schumpert
