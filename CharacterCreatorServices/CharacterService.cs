@@ -57,8 +57,8 @@ namespace CharacterCreatorServices
         {
             using(var ctx = new ApplicationDbContext())
             {
-                return ctx.LevelTable.FirstOrDefault(e => xp <= e.XP-1).Level;
-
+                int returnLevel = ctx.LevelTable.FirstOrDefault(e => xp <= e.XP).Level;
+                return (returnLevel > 0) ? returnLevel : 1;
             }
 
         }
