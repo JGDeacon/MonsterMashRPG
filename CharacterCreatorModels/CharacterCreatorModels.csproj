@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="AddAdjustment.cs" />
     <Compile Include="AddLevel.cs" />
+    <Compile Include="AddXP.cs" />
     <Compile Include="CharacterCreate.cs" />
     <Compile Include="CharacterDescription.cs" />
     <Compile Include="CharacterDetail.cs" />
