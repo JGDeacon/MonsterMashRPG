@@ -220,6 +220,10 @@
     <Compile Include="Migrations\202104151923229_wtf.Designer.cs">
       <DependentUpon>202104151923229_wtf.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104161155303_XPColumn.cs" />
+    <Compile Include="Migrations\202104161155303_XPColumn.Designer.cs">
+      <DependentUpon>202104161155303_XPColumn.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -334,6 +338,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202104151923229_wtf.resx">
       <DependentUpon>202104151923229_wtf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104161155303_XPColumn.resx">
+      <DependentUpon>202104161155303_XPColumn.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
