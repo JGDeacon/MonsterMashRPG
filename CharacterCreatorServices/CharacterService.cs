@@ -11,7 +11,7 @@ namespace CharacterCreatorServices
     public class CharacterService
     {
         private readonly Guid _userId;
-
+        private static int MaxXP = 290;
         public CharacterService(Guid userId)
         {
             _userId = userId;
@@ -44,7 +44,18 @@ namespace CharacterCreatorServices
             {
                 Character character = ctx.Character.Single(e => e.ID == model.CharacterID);
                 character.XP = character.XP + model.XPChange;
-                character.Level = SetLevel(character.XP);
+                if (character.XP>MaxXP)
+                {
+                    character.Level = 10;
+                }
+                else if (character.XP <=20)
+                {
+                    character.Level = 1;
+                }
+                else
+                {
+                    character.Level = SetLevel(character.XP);
+                }                
                 if (ctx.SaveChanges()==1)
                 {
                     return true;
@@ -57,8 +68,18 @@ namespace CharacterCreatorServices
         {
             using(var ctx = new ApplicationDbContext())
             {
-                int returnLevel = ctx.LevelTable.FirstOrDefault(e => xp <= e.XP).Level;
-                return (returnLevel > 0) ? returnLevel : 1;
+                try
+                {
+                    int returnLevel = ctx.LevelTable.FirstOrDefault(e => e.XP <= xp).Level;
+                    return (returnLevel > 0) ? returnLevel : 1;
+                }
+                catch (Exception)
+                {
+
+                    return 10;
+                }
+                
+               
             }
 
         }
