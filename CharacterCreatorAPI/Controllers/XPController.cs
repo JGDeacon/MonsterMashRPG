@@ -18,7 +18,7 @@ namespace CharacterCreatorAPI.Controllers
             var characterService = new CharacterService(userId);
             return characterService;
         }
-        public IHttpActionResult Post(AddXP model)
+        public IHttpActionResult Put(AddXP model)
         {
             if (!ModelState.IsValid)
             {

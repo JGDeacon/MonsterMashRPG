@@ -40,7 +40,16 @@ namespace CharacterCreatorServices
 
         public bool AddXP(AddXP model)
         {
-            throw new NotImplementedException();
+            using (var ctx = new ApplicationDbContext())
+            {
+                Character character = ctx.Character.Single(e => e.ID == model.CharacterID);
+                character.XP = character.XP + model.XPChange;
+                if (ctx.SaveChanges()==1)
+                {
+                    return true;
+                }
+                return false;
+            }
         }
 
         public IEnumerable<CharacterListItem> GetCharacters()
