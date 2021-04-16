@@ -27,7 +27,8 @@ namespace CharacterCreatorServices
                     BaseHP = model.HP,
                     BaseSpd = model.SPD,
                     BaseStr = model.STR,
-                    Level = 1                    
+                    Level = 1,
+                    XP=0
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -37,10 +38,36 @@ namespace CharacterCreatorServices
             }
         }
 
+        public bool AddXP(AddXP model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                Character character = ctx.Character.Single(e => e.ID == model.CharacterID);
+                character.XP = character.XP + model.XPChange;
+                character.Level = SetLevel(character.XP);
+                if (ctx.SaveChanges()==1)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        private int SetLevel(int xp)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                return ctx.LevelTable.FirstOrDefault(e => xp <= e.XP-1).Level;
+
+            }
+
+        }
+
         public IEnumerable<CharacterListItem> GetCharacters()
         {
             using (var ctx = new ApplicationDbContext())
             {
+
                 var query =
                     ctx
                     .Character
@@ -51,16 +78,16 @@ namespace CharacterCreatorServices
                         {
                             ID = e.ID,
                             Name = e.Name,
-                            HP = e.BaseHP,
-                            SPD = e.BaseSpd,
-                            STR = e.BaseStr,
-                            Level = e.Level
-                            
+                            HP = e.BaseHP + ctx.Attributes.FirstOrDefault(f => f.Level == e.Level).HP,
+                            SPD = e.BaseSpd + ctx.Attributes.FirstOrDefault(f => f.Level == e.Level).SPD,
+                            STR = e.BaseStr + ctx.Attributes.FirstOrDefault(f => f.Level == e.Level).STR,
+                            Level = e.Level,
+                            XP = e.XP
                         });
 
                 return query.ToArray();
 
-                        
+
             }
 
         }
@@ -73,15 +100,20 @@ namespace CharacterCreatorServices
                       ctx
                         .Character
                         .Single(e => e.ID == id && e.User == _userId);
-
+                int HPAdj = ctx.Attributes.Single(e => e.Level == entity.Level).HP;
+                int STRAdj = ctx.Attributes.Single(e => e.Level == entity.Level).STR;
+                int SPDAdj = ctx.Attributes.Single(e => e.Level == entity.Level).SPD;
                 return
                     new CharacterDetail
                     {
                         ID = entity.ID,
                         Name = entity.Name,
-                        HP = entity.BaseHP,
-                        SPD = entity.BaseHP,
-                        STR = entity.BaseStr
+                        HP = entity.BaseHP + HPAdj,
+                        SPD = entity.BaseHP + STRAdj,
+                        STR = entity.BaseStr + SPDAdj,
+                        Level = entity.Level,
+                        XP = entity.XP
+                        
                     };
             }
         }
