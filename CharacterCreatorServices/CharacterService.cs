@@ -44,12 +44,23 @@ namespace CharacterCreatorServices
             {
                 Character character = ctx.Character.Single(e => e.ID == model.CharacterID);
                 character.XP = character.XP + model.XPChange;
+                character.Level = SetLevel(character.XP);
                 if (ctx.SaveChanges()==1)
                 {
                     return true;
                 }
                 return false;
             }
+        }
+
+        private int SetLevel(int xp)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                return ctx.LevelTable.FirstOrDefault(e => xp <= e.XP-1).Level;
+
+            }
+
         }
 
         public IEnumerable<CharacterListItem> GetCharacters()
